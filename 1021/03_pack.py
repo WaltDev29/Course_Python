@@ -15,6 +15,7 @@ btn3 = Button(window, text="버튼3")
 
 # pack()의 속성들
 	# side : 위젯의 배치위치 지정 (TOP, BOTTOM, LEFT, RIGHT)
+	# expand : 부모 위젯의 남은 공간을 차지할지 TRUE/FALSE(기본값)
 	# fill : 남은 공간을 어떻게 채울지 지정
 		# NONE : 채우지 않음 (기본값)
 		# X : 가로 방향으로 채움
