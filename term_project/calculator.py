@@ -26,8 +26,8 @@ symbol = ""
 def put_txt(lbl):
 	global txt_result, txt_progress, num, symbol
 
+	# 예외처리
 	if txt_result == "" and lbl == '.': return
-
 	if txt_progress == "": lbl_progress.config(text="")
 
 	# 숫자 입력 시 txt 업데이트
@@ -88,8 +88,10 @@ def put_txt(lbl):
 
 
 # ============ 지우기 함수 ============
+# 한 글자 삭제
 def erase():
 	global txt_result
+
 	if txt_result == "": 
 		lbl_result.config(text="")
 		lbl_progress.config(text="")
@@ -98,8 +100,10 @@ def erase():
 		txt_result = txt_result[:-1]
 		lbl_result.config(text=txt_result)
 
+# 전체 삭제
 def clear():
 	global txt_progress, txt_result, num, symbol
+
 	txt_progress, txt_result, num, symbol = "", "", "", ""
 	lbl_progress.config(text="")
 	lbl_result.config(text="")
@@ -149,7 +153,6 @@ def calc_result():
 
 
 # ============ 디스플레이 설정 ============
-
 lbl_progress = Label(frame_top, text="", bg="#2D2D2D", fg="#FFFFFF", anchor=E, font=("",20))
 lbl_result = Label(frame_top, text="", bg="#2D2D2D", fg="#FFFFFF", anchor=E, font=("",40))
 
