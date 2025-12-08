@@ -1,5 +1,13 @@
 from tkinter import *
+import os
 
+# 실행 경로를 맞추기 위해 사용함.
+file_path = os.path.abspath(__file__)
+dir_path = os.path.dirname(file_path)
+os.chdir(dir_path)
+
+
+# ============ tkinter 윈도우 설정 ============
 window = Tk()
 window.title("주스 키오스크, 2501110203, 김호석")
 window.resizable(width=FALSE, height=FALSE)
