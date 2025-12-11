@@ -94,8 +94,8 @@ def erase():
 
 	if txt_result == "": 
 		lbl_result.config(text="")
-		lbl_progress.config(text="")
 		return
+	
 	else:
 		txt_result = txt_result[:-1]
 		lbl_result.config(text=txt_result)
@@ -149,6 +149,31 @@ def calc_result():
 		txt_result = ""
 		txt_progress = ""
 		num = ""
+
+
+
+# ============ Key Event ============
+def keyEvent(e):
+	if not e.char: return
+
+	# 계산 로직이 유니코드기호를 기준으로 기호를 판단하므로 키보드로 입력되는 기호를 유니코드기호로 변환
+	keyMap = {
+		'+': '＋',
+		'-': '－',
+		'*': '×',
+		'/': '÷'
+	}
+
+	if e.char in "0123456789": put_txt(e.char)
+	elif e.char in "+-*/": put_txt(keyMap[e.char])
+	
+	else:
+		if e.keycode == 8: erase()
+		elif e.keycode == 13: calc_result()
+		else: return
+
+
+window.bind("<Key>", keyEvent)
 
 
 
