@@ -27,7 +27,7 @@ def put_txt(lbl):
 	global txt_result, txt_progress, num, symbol
 
 	# 예외처리
-	if txt_result == "" and lbl == '.': return
+	if (txt_result == "" or '.' in txt_result) and lbl == '.': return
 	if txt_progress == "": lbl_progress.config(text="")
 
 	# 숫자 입력 시 txt 업데이트
@@ -164,14 +164,13 @@ def keyEvent(e):
 		'/': '÷'
 	}
 
-	if e.char in "0123456789": put_txt(e.char)
+	if e.char in ".0123456789": put_txt(e.char)
 	elif e.char in "+-*/": put_txt(keyMap[e.char])
 	
 	else:
 		if e.keycode == 8: erase()
 		elif e.keycode == 13: calc_result()
-		else: return
-
+		else: print(e.char)
 
 window.bind("<Key>", keyEvent)
 
